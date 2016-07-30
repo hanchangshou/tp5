@@ -1,0 +1,20 @@
+{$title}
+<table border="1">
+{volist name="list" id="data"}
+	<tr>
+		<td>{$data.linkid}</td>
+		<td>{$data.url}</td>
+		<td>{$data.name}</td>
+		<td><a href="/index/index/json/id/{$data.linkid}">返回json</a></td>
+		<td><a href="/index/index/delete?id={$data.linkid}">删除</a></td>
+	</tr>
+{/volist}
+	<tr>
+		<td>并不存在</td>
+		<td>测试错误</td>
+		<td>测试错误</td>
+		<td><a href="/index/index/json/id/999">返回json</a></td>
+		<td><a href="/index/index/delete?id=999">删除</a></td>
+	</tr>
+</table>
+<input type="button" onclick="location.href='/index/index/add'" value="增加一个" />

@@ -1,0 +1,62 @@
+<style>
+.vo_list{width:1000px;}
+.vo_list input{width:100px;}
+</style>
+<div class="continer">
+	<form method="POST" action="/admin/admin/register">
+	<ul class="vo_list">
+		<li class="tab-head">
+			<span style="width:40px;">序号</span>
+			<span>用户名</span>
+			<span>所属角色</span>
+			<span>最后登录IP</span>
+			<span>最后登录时间</span>
+			<span>E-mail</span>
+			<span>真实姓名</span>
+			<span style="width:130px;">管理操作</span>
+		</li>
+		{volist name="volist" id="vo"}
+			<li>
+				<span>{$vo.userid}</span>
+				<span>{$vo.username}</span>
+				<span>{$vo.roleid}</span>
+				<span>{$vo.lastloginip}</span>
+				<span>{$vo.lastlogintime}</span>
+				<span>{$vo.email}</span>
+				<span>{$vo.realname}</span>
+				<span><a href="">修改</a>|<a href="">删除</a>|<a href="">口令卡</a></span>
+			</li>
+		{/volist}
+
+		<li id="js_addadmin" style="display: none;">
+			<span></span>
+			<span><input type="test" name="username" placeholder="用户名" /></span>
+			<span>
+				<select name="roleid">
+					{volist name="role" id="vo"}
+					<option value="{$vo.roleid}">{$vo.rolename}</option>
+					{/volist}
+				</select>
+			</span>
+			<span><input name="password" type="password" placeholder="管理员密码" /></span>
+			<span><input type="password" name="rpassword" placeholder="确认密码" /></span>
+			<span><input type="test" name="email" placeholder="E-mail" /></span>
+			<span><input name="realname" placeholder="真实姓名" /></span>
+			<span style="width:130px;"><input type="submit"  name="submit" value="提交" /></span>
+		</li>
+
+	</ul>
+	<input type="button" value="增加一个" id="js_btn_showadd" class="ui-btn">
+	</form>
+	<p></p>
+</div>
+<script>
+	 function get(id){
+		 return document.getElementById(id);
+	 }
+
+	 get('js_btn_showadd').onclick = function ()
+		{
+			get('js_addadmin').style.display = "table-row";
+		}
+</script>
